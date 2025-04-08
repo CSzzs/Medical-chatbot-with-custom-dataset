@@ -24,7 +24,7 @@ embeddings = download_hugging_face_embeddings()
 index_name = 'medicalbot'
 
 # Embed each chunk and update the embeddings into your pincone index
-docsearch = PineconeVectorStore.from_documents(
+docsearch = PineconeVectorStore.from_existing_index(
     index_name = index_name,
     embedding= embeddings,
 )
@@ -56,4 +56,4 @@ def chat():
     return str(response['answer'])
 
 if __name__ == '__main__':
-    app.run(hsot="0.0.0.0", port = 8000, debug=True)
+    app.run(host="0.0.0.0", port = 8000, debug=True)
